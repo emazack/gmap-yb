@@ -1,0 +1,35 @@
+/* Restore a livelli defalut visivi */
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* evitare che scrolli anche la pagina intera, dopo che si è inserito una scroll bar */
+html{
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Set the size of the div element that contains the map */
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
+
+/* mediaQuery Versione desktop  */
+@media all and (min-width: 992px){
+
+}
+
+/* mediaQuery versione tablet */
+@media all and (min-width: 769px) and (max-width: 991px) {
+
+}
+
+/* mediaQuery versione phone */
+@media all and (max-width: 768px){
+  
+}

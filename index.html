@@ -1,0 +1,41 @@
+<!-- DICITURA GENERALE PER HTML -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- link per mediaQuery -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- link al css -->
+    <link rel="stylesheet" href="style.css">
+    <!-- link per handlebars -->
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <!-- link per fontawesome -->
+    <script src="https://kit.fontawesome.com/18da76cc27.js" crossorigin="anonymous"></script>
+    <!-- link per charts (grafici in js) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2/dist/Chart.min.js"></script>
+    <!-- link per google map API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&callback=initMap&libraries=&v=weekly" defer></script>
+
+    <title></title>
+  </head>
+  <body>
+
+    <h3>Mappa di dove trovare Alessandro Biagini</h3>
+    <div id="map">
+
+    </div>
+
+    <!-- Per utilizzare handlebars bisogna creare un template qui nel body ex:
+    <script id="template-mex-inviato" type="text/x-handlebars-template">
+      <div class={{TipoDiMessaggio}} style=''>
+          <p>{{MessaggioChat}}</p>
+          <div class='menuatendina'>Cancella</div>
+      </div>
+    </script>-->
+
+    <!-- link per far funzionare jQuery, può andare anche nell'head -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- link al file script -->
+    <script type="text/javascript" src="myscript.js"></script>
+  </body>
+</html>
