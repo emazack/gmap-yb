@@ -31,7 +31,6 @@ function initMap() {
   var directionsLatLng;
   var directionsLatitude;
   var directionsLongitude;
-  var map;
   var start;
   var end;
   
