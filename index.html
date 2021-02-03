@@ -19,10 +19,46 @@
     <title></title>
   </head>
   <body>
-
-    <h3>Mappa di dove trovare Alessandro Biagini</h3>
+    <div class="top-header">
+      <h1>
+        Mappa dei servizi trasporti
+      </h1>
+    </div>
     <div id="map">
-
+    </div>
+    <div class="bottom-header">
+      <div class="calcola-percorso">
+        <h2>
+          Calcola Percorso
+        </h2>
+      </div>
+      <div class="box-partenza">
+        <label for="partenza">            
+          <h3>
+            Partenza
+          </h3>
+        </label>
+        <div class="input-row">
+          <input id="partenza" type="text">
+          <div id="position-partenza" class="my-position">
+            <em class="fa fa-map-marker"></em>
+          </div>
+        </div>
+      </div>
+      <div class="box-destinazione">
+        <label for="destinazione">
+          <h3>
+            Destinazione
+          </h3>
+        </label>
+        <div class="input-row">
+          <input id="destinazione" type="text">
+          <div id="position-destinazione" class="my-position">
+            <em class="fa fa-map-marker"></em>
+          </div>
+        </div>
+      </div>
+      <button id="calc-route" type="submit">Cerca</button>
     </div>
 
     <!-- Per utilizzare handlebars bisogna creare un template qui nel body ex:

@@ -3,6 +3,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  color: #3F51B5;
 }
 
 /* evitare che scrolli anche la pagina intera, dopo che si è inserito una scroll bar */
@@ -19,6 +20,60 @@ html{
   /* The width is the width of the web page */
 }
 
+.bottom-header, .top-header {
+  text-align: center;
+  border: 2px solid rgb(146, 146, 146);
+  background-color: #ddd;
+}
+
+.bottom-header {
+  height: 30vh;
+}
+
+.top-header {
+  height: 20vh;
+}
+
+.bottom-header button {
+  appearance:none;
+  -webkit-appearance:none;
+
+  padding:10px;
+  border:none;
+  background-color:#3F51B5;
+  color:#fff;
+  font-weight:600;
+  border-radius:5px;
+  width:25%;
+
+}
+
+input {
+  padding:10px;
+  border-radius:10px;
+  width:50%;
+}
+
+.input-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-position {
+  padding: 12px;
+  margin-left: 5px;
+  background-color: rgb(146, 146, 146);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.box-destinazione {
+  margin-bottom: 25px;
+}
+
+
+
 /* mediaQuery Versione desktop  */
 @media all and (min-width: 992px){
 
@@ -31,5 +86,5 @@ html{
 
 /* mediaQuery versione phone */
 @media all and (max-width: 768px){
-  
+
 }

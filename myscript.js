@@ -7,16 +7,6 @@
   // //   }
   // // );
 
-  // gestione Handlebars:
-  // Prendo quello che è contenuto nello script selezionandolo tramite id
-  // // var source = $("#template-mex-inviato").html();
-  // ciò che ho preso lo do a Handlebars e glielo faccio smaneggiare
-  // // var template = Handlebars.compile(source);
-  // creo una variabile che contiene l'informazione completa del tamplate + il testo inserito dinamicamente
-  // // var html = template(testoInputObject);
-  // inserisco l'informazione del template "html" dove voglio io
-  // // $(".DoveVoglioIo").append(html);
-
   // chiamate AJAX per utilizzare api
   // // $.ajax({
   // //   url : "https://flynn.boolean.careers/exercises/api/random/int",
@@ -35,25 +25,38 @@
 let map;
 
 function initMap() {
+  var directionsDisplay;
+  var directionsService = new google.maps.DirectionsService();
+  var directionsMap;
+  var directionsLatLng;
+  var directionsLatitude;
+  var directionsLongitude;
+  var map;
+  var start;
+  var end;
+  
   map = new google.maps.Map(document.getElementById("map"), {
     center: new google.maps.LatLng(45.697981, 9.668953),
     zoom: 15,
   });
 
-    //directions
-  var directionsDisplay;
-  var directionsService = new google.maps.DirectionsService();
-  var directionsMap;
-  var z = document.getElementById("map");
-  var start;
-  var end = prompt("Dove vuoi andare, caro Biagini?")
+
+  function getInputValue(idInputDomElement){
+    var inputVal = document.getElementById(idInputDomElement).value;
+    return inputVal;
+  }  
+  
+  function setInputValue(idInputDomElement, valueToBeSet){
+    var inputVal = document.getElementById(idInputDomElement).value = valueToBeSet;
+    return inputVal;
+  }
 
   function getDirectionsLocation() {
     console.log("getDirectionsLocation");
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showDirectionsPosition);
       } else {
-          z.innerHTML = "Geolocation is not supported by this browser.";
+          map.innerHTML = "La geolocalizzazione non è supportata in questo dispositivo";
       }
   }
   
@@ -62,15 +65,14 @@ function initMap() {
       directionsLatitude = position.coords.latitude;
       directionsLongitude = position.coords.longitude;
       directionsLatLng = new google.maps.LatLng(directionsLatitude,directionsLongitude);
-      getDirections();
   }
 
-  function getDirections() {
+  function getDirections(startingPoint) {
     console.log('getDirections');
     directionsDisplay = new google.maps.DirectionsRenderer();
     var directionsOptions = {
       zoom:12,
-      center: start
+      center: startingPoint
     }
     directionsMap = new google.maps.Map(document.getElementById("map"), directionsOptions);
     directionsDisplay.setMap(directionsMap);
@@ -78,13 +80,13 @@ function initMap() {
   }
 
   function calcRoute() {
-    console.log("calcRoute");
-    start = directionsLatLng;
+    console.log("calcRoute");    
     var request = {
-      origin:start,
-      destination:end,
+      origin: start,
+      destination: end,
       travelMode: google.maps.TravelMode.TRANSIT
     };
+    console.log(request);
     directionsService.route(request, function(result, status) {
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(result);
@@ -93,4 +95,27 @@ function initMap() {
   }
 
   getDirectionsLocation();
+  
+
+  document.getElementById("position-partenza").addEventListener("click", function() {
+    if (directionsLatLng) {
+      setInputValue('partenza', directionsLatitude + ',' + directionsLongitude);
+    } else {
+      getDirectionsLocation();
+    }
+  } );
+
+  document.getElementById("position-destinazione").addEventListener("click", function() {
+    if (directionsLatLng) {
+      setInputValue('destinazione', directionsLatitude + ',' + directionsLongitude);
+    } else {
+      getDirectionsLocation();
+    }
+  } );  
+  
+  document.getElementById("calc-route").addEventListener("click", function() { 
+    start = getInputValue('partenza');
+    end = getInputValue('destinazione');
+    getDirections();
+  } );
 };
